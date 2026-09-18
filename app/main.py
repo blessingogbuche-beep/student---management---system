@@ -7,7 +7,7 @@ import sqlite3
 create_database()
 
 @app.route("/", methods=["GET", "POST"])
-def home():
+def register_student():
 
     if request.method == "POST":
         name = request.form["name"]
@@ -59,7 +59,7 @@ def home():
         connection.commit()
         connection.close()
 
-        return redirect(url_for("home"))
+        return render_template("index.html",success=True)
+    return render_template("index.html",success=False)
 
-    return render_template("index.html")
 
